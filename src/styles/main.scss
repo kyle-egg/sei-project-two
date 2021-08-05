@@ -1,0 +1,18 @@
+@charset "utf-8";
+@import "../../node_modules/bulma/bulma.sass";
+
+* {
+  text-align: center;
+}
+.correct {
+  background-color: green;
+}
+
+.incorrect {
+  background-color: red;
+} 
+
+button {
+  margin: 20px;
+  min-width: 200px;
+}
