@@ -4,6 +4,7 @@
 * {
   text-align: center;
 }
+
 .correct {
   background-color: green;
 }
@@ -12,7 +13,13 @@
   background-color: red;
 } 
 
+.container {
+  max-width: 650px;
+}
+
 button {
   margin: 20px;
   min-width: 200px;
+  max-width: 250px;
+  overflow-wrap: break-word;
 }
