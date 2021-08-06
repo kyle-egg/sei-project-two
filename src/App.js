@@ -2,97 +2,81 @@ import axios from 'axios'
 import React from 'react'
 
 function App() {
-  // console.log(process.env.REACT_APP_MY_API_KEY)
   let [data, setData] = React.useState(null)
-
-  const handleRefresh = () => location.reload()
-
-  const handleAnswer = (e) => {
-    console.log(e.target.textContent.length)
-    console.log(cAns.length)
-    // console.log(e.target)
-    if (e.target.textContent === cAns) {
-      e.target.classList.add('correct')
-
-    } else {
-      e.target.classList.add('incorrect')
-
-    }
-  }
+  // const [hideAnswers, setHideAnswers] = React.useState(false)
+  const score = []
+  // const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   React.useEffect(() => {
     const getData = async () => {
       const response = await axios.get('https://opentdb.com/api.php?amount=10&type=multiple') 
       setData(response.data.results)
-      // setData((response.data.results[0].question))
-      
-      // setIAnsOne(response.data.results[0].incorrect_answers[0])
-      // setIAnsTwo(response.data.results[0].incorrect_answers[1])
-      // setIAnsThree(response.data.results[0].incorrect_answers[2])
-      // setCAns(response.data.results[0].correct_answer)
-
-      
     }
     getData()
     
   }, [ ])
-  // console.log(data)
+  console.log(data)
 
-  // function findSpecial() {
-  //   if (data && data.includes('&quot;')) {
-  //     console.log(data.replaceAll('&quot;', '"'))
-  //     data = data.replaceAll('&quot;', '"')
-  //   }
-  //   if (data && data.includes('&#039;')) {
-  //     // eslint-disable-next-line quotes
-  //     console.log(data.replaceAll('&#039;', "'"))
-  //     // eslint-disable-next-line quotes
-  //     data = data.replaceAll('&#039;', "'")
-  //   }
-  // }
+  function findSpecial() {
+    if (data && data.includes('&quot;')) {
+      console.log(data.replaceAll('&quot;', '"'))
+      data = data.replaceAll('&quot;', '"')
+    }
+    if (data && data.includes('&#039;')) {
+      // eslint-disable-next-line quotes
+      console.log(data.replaceAll('&#039;', "'"))
+      // eslint-disable-next-line quotes
+      data = data.replaceAll('&#039;', "'")
+    }
+  }
 
   // In what year was Pok&eacute;mon Diamond &amp; Pearl released in Japan?
 
-  // findSpecial()
+  findSpecial()
+  // console.log(data)
 
-  // const allAnswers = data && data.map(ques => {
-  //   ques.incorrect_answers.push(ques.correct_answer)
-  //   console.log(ques.incorrect_answers.sort())
-  //   return ques.incorrect_answers.sort()
-  // })
+  const handleAnswer = (e) => {
+    const correctAns = data.map(ques => (ques.correct_answer))
+    // setHideAnswers(!hideAnswers)
+    console.log(correctAns)
+    console.log(e.target.textContent)
 
+    if (correctAns.includes(e.target.textContent)) {
+      e.target.classList.add('correct')
+      score.push(1)
+      console.log(score)
+
+    } else {
+      e.target.classList.add('incorrect')
+      score.push(0)
+      console.log(score)
+
+    }
+
+  }
 
   return (
     <section className="section">
       <div className="container">
         {data && data.map(ques => (
-          <div>
-<h1 className="title">{ques.question}</h1>
-            {ques.incorrect_answers.push(ques.correct_answer)}
-             {ques.incorrect_answers.sort()}
-             <button className="button" onClick={handleAnswer}>{ques.incorrect_answers[0]}</button>
-             <button className="button" onClick={handleAnswer}>{ques.incorrect_answers[1]}</button>
-             <button className="button" onClick={handleAnswer}>{ques.incorrect_answers[2]}</button>
-             <button className="button" onClick={handleAnswer}>{ques.incorrect_answers[3]}</button>
+          <div key={ques.question}>
+            <h1 className="title">{ques.question}</h1>
+            <p className="code is-hidden">
+              {ques.incorrect_answers.push(ques.correct_answer)}
+              {ques.incorrect_answers.sort()}
+              
+            </p>
+            {/* {!hideAnswers &&
+            <div> */}
+            <button className="button" onClick={handleAnswer}>{ques.incorrect_answers[0]}</button>
+            <button className="button" onClick={handleAnswer}>{ques.incorrect_answers[1]}</button>
+            <button className="button" onClick={handleAnswer}>{ques.incorrect_answers[2]}</button>
+            <button className="button" onClick={handleAnswer}>{ques.incorrect_answers[3]}</button>
+            {/* </div>} */}
+
           </div>
-          ))}
-{/* 
-        <div>
-          <div>
-            <div>
-              <button className="button" onClick={handleAnswer}>{allAnswers[0]}</button>
-              <button className="button" onClick={handleAnswer}>{allAnswers[1]}</button>
-            </div>
-            <div>
-              <button className="button" onClick={handleAnswer}>{allAnswers[2]}</button>
-              <button className="button" onClick={handleAnswer}>{allAnswers[3]}</button>
-            </div>
-          </div>
-        </div>
-        </div>
-        <button className="button" onClick={handleRefresh} > Give Me Another Question! </button>
-       */}
-       </div>
+        ))}
+      </div>
     </section>
 
   )
