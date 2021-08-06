@@ -9,6 +9,10 @@
   display: none;
 }
 
+.score {
+  color: white;
+}
+
 .correct {
   background-color: green;
 }
@@ -18,12 +22,37 @@
 } 
 
 .container {
-  max-width: 650px;
+  max-width: 600px;
+}
+
+.section {
+  background-image: url('https://previews.123rf.com/images/dgolbay/dgolbay1902/dgolbay190200100/117523494-wood-table-surface-top-view-natural-wood-patterns-top-view-.jpg');
+}
+
+.qwrapper {
+  margin: 50px;
+  max-width: 600px;
+  padding: 20px; 
+  border-radius: 50px;
+  background-image: url('https://dbdzm869oupei.cloudfront.net/img/posavasos/preview/48323.png');
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 button {
   margin: 20px;
   min-width: 200px;
-  max-width: 250px;
+  max-width: 500px;
   overflow-wrap: break-word;
+}
+
+.hero-body {
+  background-image: url('https://activecollab.com/upload/blog/301/cover.png');
+  background-size: cover;
+  height: 100vh;
+
+  p {
+    color: #ffe6a3;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
 }
