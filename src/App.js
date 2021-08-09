@@ -5,8 +5,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Home from './components/Home'
 
 function App() {
-  let [data, setData] = React.useState(null)
-  const scoreDisplay = document.querySelector('#score-display')
+  const [data, setData] = React.useState(null)
+  // const scoreDisplay = document.querySelector('#score-display')
   let score = 0
 
   React.useEffect(() => {
@@ -100,8 +100,8 @@ function App() {
 
     if (correctAns.includes(e.target.textContent)) {
       e.target.classList.add('correct')
-      score += 100
-      scoreDisplay.textContent = score
+      // score += 100
+      // scoreDisplay.textContent = score
       console.log(score)
 
     } else {
