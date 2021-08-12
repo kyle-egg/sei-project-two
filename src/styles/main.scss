@@ -9,7 +9,7 @@
   display: none;
 }
 
-.score {
+#score {
   color: white;
 }
 
@@ -46,13 +46,25 @@ button {
   overflow-wrap: break-word;
 }
 
+.hero {
+  background-color: black;
+  align-content: center;
+}
+
 .hero-body {
   background-image: url('https://activecollab.com/upload/blog/301/cover.png');
-  background-size: cover;
+  background-position: center;
+  // background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   height: 100vh;
+  align-content: center;
+
+  
 
   p {
     color: #ffe6a3;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
+
 }
